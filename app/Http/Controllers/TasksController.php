@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Task; 
+use App\Task;    // add
 
 class TasksController extends Controller
 {
@@ -22,6 +22,7 @@ class TasksController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +30,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-      $task = new Task;
+        $task = new Task;
 
         return view('tasks.create', [
             'task' => $task,
@@ -45,16 +46,16 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'content' => 'required|max:191',
+            'task' => 'required|max:191',
             'status' => 'required|max:191',
         ]);
         
-        
         $task = new Task;
-        $task->status = $request->status;  
-        $task->content = $request->content;
+        $task->status = $request->status;
+        $task->task = $request->task;
         $task->save();
-
+        
+       
         return redirect('/');
     }
 
@@ -66,7 +67,7 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::find($id);
+         $task = Task::find($id);
 
         return view('tasks.show', [
             'task' => $task,
@@ -81,7 +82,7 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::find($id);
+         $task = Task::find($id);
 
         return view('tasks.edit', [
             'task' => $task,
@@ -97,15 +98,17 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request, [
-            'content' => 'required|max:191',
+        $this->validate($request, [
+            'task' => 'required|max:191',   
             'status' => 'required|max:191',
         ]);
         
-         $task = Task::find($id);
-         $task->status = $request->status;
-        $task->content = $request->content;
+        $task = Task::find($id);
+        $task->status = $request->status;
+        $task->task = $request->task;
         $task->save();
+        
+        
 
         return redirect('/');
     }

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
- <<table class="table table-bordered">
+
+ <table class="table table-bordered">
         <tr>
             <th>id</th>
             <td>{{ $task->id }}</td>

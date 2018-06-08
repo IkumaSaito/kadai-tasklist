@@ -14,20 +14,14 @@
     </head>
 
     <body>
-    <div class="col-xs-12">
-    <div class="col-sm-offset-2"col-sm-8"></div>
-    <div class="col-sm-offset-2"col-md-8"></div>
-    <div class="col-sm-offset-3"col-md-6"></div>
-       @include('commons.navbar')
+           @include('commons.navbar')
         
         <div class="container">
+            
             @include('commons.error_tasks')
             
             @yield('content')
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </body>
+         </div>
+           
+    </body> 
 </html>
